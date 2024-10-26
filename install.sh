@@ -30,34 +30,34 @@ echo "Downloading ccminer optimezed for ARM-A55"
 
 wget -c https://github.com/Oink70/CCminer-ARM-optimized/releases/download/v3.8.3-4/ccminer-v3.8.3-4_ARM-A55 -O ccminer -P ~/ccminer
 
-if [ -f ~/ccminer/config.json ]
-then
-  INPUT=
-  COUNTER=0
-  while [ "$INPUT" != "y" ] && [ "$INPUT" != "n" ] && [ "$COUNTER" <= "10" ]
-  do
-    printf '"~/ccminer/config.json" already exists. Do you want to overwrite? (y/n) '
-    read INPUT
-    if [ "$INPUT" = "y" ]
-    then
-      echo "\noverwriting current \"~/ccminer/config.json\"\n"
-      rm ~/ccminer/config.json
-    elif [ "$INPUT" = "n" ] && [ "$COUNTER" = "10" ]
-    then
-      echo "saving as \"~/ccminer/config.json.#\""
-    else
-      echo 'Invalid input. Please answer with "y" or "n".\n'
-      ((COUNTER++))
-    fi
-  done
-fi
+#if [ -f ~/ccminer/config.json ]
+#then
+#  INPUT=
+#  COUNTER=0
+#  while [ "$INPUT" != "y" ] && [ "$INPUT" != "n" ] && [ "$COUNTER" <= "10" ]
+#  do
+#    printf '"~/ccminer/config.json" already exists. Do you want to overwrite? (y/n) '
+#    read INPUT
+#    if [ "$INPUT" = "y" ]
+#    then
+#      echo "\noverwriting current \"~/ccminer/config.json\"\n"
+#      rm ~/ccminer/config.json
+#    elif [ "$INPUT" = "n" ] && [ "$COUNTER" = "10" ]
+#    then
+#      echo "saving as \"~/ccminer/config.json.#\""
+#    else
+#      echo 'Invalid input. Please answer with "y" or "n".\n'
+#      ((COUNTER++))
+#    fi
+#  done
+#fi
 wget https://raw.githubusercontent.com/ahlueck/Android-Mining/main/config.json -P ~/ccminer
 
-if [ -f ~/ccminer/ccminer ]
-then
-  mv ~/ccminer/ccminer ~/ccminer/ccminer_old
-fi
-mv ~/ccminer/${GITHUB_DOWNLOAD_NAME} ~/ccminer/ccminer
+#if [ -f ~/ccminer/ccminer ]
+#then
+#  mv ~/ccminer/ccminer ~/ccminer/ccminer_old
+#fi
+#mv ~/ccminer/${GITHUB_DOWNLOAD_NAME} ~/ccminer/ccminer
 chmod +x ~/ccminer/ccminer
 
 #cat << EOF > ~/ccminer/start.sh
