@@ -21,13 +21,14 @@ then
 fi
 cd ~/ccminer
 
-GITHUB_RELEASE_JSON=$(curl --silent "https://api.github.com/repos/Oink70/CCminer-ARM-optimized/releases?per_page=1" | jq -c '[.[] | del (.body)]')
-GITHUB_DOWNLOAD_URL=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets[0].browser_download_url")
-GITHUB_DOWNLOAD_NAME=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets[0].name")
+#GITHUB_RELEASE_JSON=$(curl --silent "https://api.github.com/repos/Oink70/CCminer-ARM-optimized/releases?per_page=1" | jq -c '[.[] | del (.body)]')
+#GITHUB_DOWNLOAD_URL=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets[0].browser_download_url")
+#GITHUB_DOWNLOAD_NAME=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets[0].name")
 
-echo "Downloading latest release: $GITHUB_DOWNLOAD_NAME"
+#echo "Downloading latest release: $GITHUB_DOWNLOAD_NAME"
+echo "Downloading ccminer optimezed for ARM-A55"
 
-wget ${GITHUB_DOWNLOAD_URL} -P ~/ccminer
+wget -c https://github.com/Oink70/CCminer-ARM-optimized/releases/download/v3.8.3-4/ccminer-v3.8.3-4_ARM-A55 -O ccminer -P ~/ccminer
 
 if [ -f ~/ccminer/config.json ]
 then
@@ -50,7 +51,7 @@ then
     fi
   done
 fi
-wget https://raw.githubusercontent.com/Oink70/Android-Mining/main/config.json -P ~/ccminer
+wget https://raw.githubusercontent.com/ahlueck/Android-Mining/main/config.json -P ~/ccminer
 
 if [ -f ~/ccminer/ccminer ]
 then
